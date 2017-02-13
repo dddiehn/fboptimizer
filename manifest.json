@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "fboptimizer",
+  "version": "0.1",
+  
+  "description": "A chrome extension intended to optimize users' Facebook experience",
+  
+  "content_scripts": [ {
+    "js": [ "jquery-3.1.1.slim.min.js", "fboptimitzer.js"],
+    "matches": [ "http://*/*", "https://*/*" ]
+  } ]
+}
