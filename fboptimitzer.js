@@ -14,20 +14,14 @@ $(document).keydown(function(e) {
       // these ones work:
       $('a:contains("ClickHole")').closest("[role='article']").remove();
       $('span:contains("\'s Birthday")').closest('._4ikz').remove();
+      $('span._m8d:contains("Suggested Post")').closest("[role='article']").remove();
 
       // ***************************************************************************************
-
-      // well...I thought these were working:
-      $('span._m8d:contains("Suggested Post")');
-
-      // ***************************************************************************************
-
       // these ones don't work:
 
-      // ***************************************************************************************
 
       // special fancy informations
-      console.log(count + ' things BAHLEETED');
+      console.log('BAHLEETED');
     }
     down[e.keyCode] = false;
 });
