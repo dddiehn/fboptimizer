@@ -8,14 +8,25 @@ $(document).keydown(function(e) {
     if (down[17] && down[13]) {
       count = 0;
 
+      // leaving out count information till I think of a cleaner way to do it
+      // count += $('[role="article"] a:contains("ClickHole")').length;
+
       // these ones work:
-      count += $('[role="article"] a:contains("ClickHole")').length;
       $('a:contains("ClickHole")').closest("[role='article']").remove();
+      $('span:contains("\'s Birthday")').closest('._4ikz').remove();
+
+      // ***************************************************************************************
+
       // well...I thought these were working:
       $('span._m8d:contains("Suggested Post")');
 
+      // ***************************************************************************************
+
       // these ones don't work:
-      $('span:contains("Birthday")').closest('._4ikz');
+
+      // ***************************************************************************************
+
+      // special fancy informations
       console.log(count + ' things BAHLEETED');
     }
     down[e.keyCode] = false;
