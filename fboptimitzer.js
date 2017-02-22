@@ -12,21 +12,22 @@ function deleteEm(){
   // bads stores every string that you don't wanna see in a post
   var politics = ["trump", "democrat", "republican"];
   var clickbait = ["you won't believe"];
-  var lame = ["memes", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship"];
+  var lame = ["memes", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe"];
   var ads = ["suggested page", "tour date", "sponsered"];
-  var sports = ["football", "nfl", "basketball", "baseball"]
+  var sports = ["football", "nfl", "basketball", "baseball", "nhl"]
 
   // wow js is lame
   // yes, I'm gonna be doing some conditionalizing when I get the config stuff working
   var bads = politics.concat(clickbait.concat(lame.concat(ads.concat(sports))));
   for (var i = 0; i < bads.length; i++) {
     console.log(bads[i]);
-    $("[role='article']:contains(\"" + bads[i] + "\")").closest('._4ikz').remove();
+    $("[role='article']:contains(\"" + bads[i] + "\")").closest('._4ikz').hide();
   }
-  $('span:contains("\'s Birthday")').closest('._4ikz').remove();
-  $('span._m8d:contains("Suggested Post")').closest("[role='article']").remove();
+  $('span:contains("\'s Birthday")').closest('._4ikz').hide();
+  $('span._m8d:contains("Suggested Post")').closest("[role='article']").hide();
 
-  console.log('BAHLEETED');
+  var deletedCount = $("[role='article']:hidden").length;
+  console.log('BAHLEETED ' + deletedCount + ' sucky posts');
 }
 
 // http://stackoverflow.com/questions/20849496/using-facebook-sdk-with-chrome-extensions
