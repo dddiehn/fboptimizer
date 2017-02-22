@@ -39,10 +39,16 @@ $(document).keydown(function(e) {
 
       // these ones work:
       // bads stores every string that you don't wanna see in a post
-      var bads = ["#", "memes", "trump"];
+      var politics = ["trump", "democrat", "republican"];
+      var clickbait = ["you won't believe"];
+      var lame = ["memes", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction"];
+      var ads = ["suggested page", "tour date"];
+
+      var bads = politics.concat(clickbait.concat(lame.concat(ads)));
       for (var i = 0; i < bads.length; i++) {
+        console.log(bads[i]);
         deleteSelector = ":contains(\"" + bads[i] + "\")";
-        $("[role='article']" + deleteSelector).remove();
+        $("[role='article']" + deleteSelector).closest('._4ikz').remove();
         // $('p' + deleteSelector).closest("[role='article']").remove();
         // $('a' + deleteSelector).closest("[role='article']").remove();
       }
@@ -56,7 +62,6 @@ $(document).keydown(function(e) {
 
       // ***************************************************************************************
       // these ones don't work:
-
 
       // special fancy informations
       console.log('BAHLEETED');
