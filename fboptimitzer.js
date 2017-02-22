@@ -5,6 +5,34 @@ $.expr[":"].contains = $.expr.createPseudo(function(arg) {
     };
 });
 
+function deleteEm(){
+  count = 0;
+
+  // leaving out count information till I think of a cleaner way to do it
+  // count += $('[role="article"] a:contains("ClickHole")').length;
+
+  // these ones work:
+  // bads stores every string that you don't wanna see in a post
+  var politics = ["trump", "democrat", "republican"];
+  var clickbait = ["you won't believe"];
+  var lame = ["memes", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction"];
+  var ads = ["suggested page", "tour date"];
+
+  // wow js is lame
+  var bads = politics.concat(clickbait.concat(lame.concat(ads)));
+  for (var i = 0; i < bads.length; i++) {
+    console.log(bads[i]);
+    deleteSelector = ":contains(\"" + bads[i] + "\")";
+    $("[role='article']" + deleteSelector).closest('._4ikz').remove();
+    // $('p' + deleteSelector).closest("[role='article']").remove();
+    // $('a' + deleteSelector).closest("[role='article']").remove();
+  }
+  $('span:contains("\'s Birthday")').closest('._4ikz').remove();
+  $('span._m8d:contains("Suggested Post")').closest("[role='article']").remove();
+
+  console.log('BAHLEETED');
+}
+
 // http://stackoverflow.com/questions/20849496/using-facebook-sdk-with-chrome-extensions
 
 // http://stackoverflow.com/questions/10655202/detect-multiple-keys-on-single-keypress-event-in-jquery/10655316#10655316
@@ -32,29 +60,8 @@ $(document).keydown(function(e) {
     // 13 is enter
     // 17 is ctrl
     if (down[17] && down[13]) {
-      count = 0;
 
-      // leaving out count information till I think of a cleaner way to do it
-      // count += $('[role="article"] a:contains("ClickHole")').length;
-
-      // these ones work:
-      // bads stores every string that you don't wanna see in a post
-      var politics = ["trump", "democrat", "republican"];
-      var clickbait = ["you won't believe"];
-      var lame = ["memes", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction"];
-      var ads = ["suggested page", "tour date"];
-
-      var bads = politics.concat(clickbait.concat(lame.concat(ads)));
-      for (var i = 0; i < bads.length; i++) {
-        console.log(bads[i]);
-        deleteSelector = ":contains(\"" + bads[i] + "\")";
-        $("[role='article']" + deleteSelector).closest('._4ikz').remove();
-        // $('p' + deleteSelector).closest("[role='article']").remove();
-        // $('a' + deleteSelector).closest("[role='article']").remove();
-      }
-      $('span:contains("\'s Birthday")').closest('._4ikz').remove();
-      $('span._m8d:contains("Suggested Post")').closest("[role='article']").remove();
-
+      deleteEm();
       // chrome.storage.sync.set({'value': theValue}, function() {
       //     // Notify that we saved.
       //     message('Settings saved');
@@ -64,7 +71,7 @@ $(document).keydown(function(e) {
       // these ones don't work:
 
       // special fancy informations
-      console.log('BAHLEETED');
+
     }
     down[e.keyCode] = false;
 });
