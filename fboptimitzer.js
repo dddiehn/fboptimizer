@@ -75,3 +75,7 @@ $(document).keydown(function(e) {
     }
     down[e.keyCode] = false;
 });
+
+$("[id^=topnews_main_stream_]").on("change", function(){console.log("taco bell");});
+
+deleteEm();
