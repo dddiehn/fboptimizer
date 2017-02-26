@@ -10,18 +10,24 @@ function deleteEm(){
 
   // these ones work:
   // bads stores every string that you don't wanna see in a post
-  var politics = ["trump", "democrat", "republican"];
-  var clickbait = ["you won't believe"];
-  var lame = ["memes", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe"];
+  var politics = ["trump", "democrat", "republican", "right wing", "left wing", "liberal", "conservative"];
+  var clickbait = ["you won't believe", "faith in humanity", ""];
+  var lame = ["memes", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that"];
   var ads = ["suggested page", "tour date", "sponsered"];
-  var sports = ["football", "nfl", "basketball", "baseball", "nhl"]
+  var sports = ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"]
 
-  // wow js is lame
+  // wow js is lame. should be able to do ['a'] + ['b'] to evaluate to ['a', 'b']
   // yes, I'm gonna be doing some conditionalizing when I get the config stuff working
   var bads = politics.concat(clickbait.concat(lame.concat(ads.concat(sports))));
   for (var i = 0; i < bads.length; i++) {
     console.log(bads[i]);
-    $("[role='article']:contains(\"" + bads[i] + "\")").closest('._4ikz').hide();
+    // we should figure out a way so that words like "cat" don't hide words like "category"
+    // right now I'm just including a space before and after the "bad words"
+    // this won't hide posts that contain "bad words" at the end or beginning of the post
+    $("[role='article']:contains(\" " + bads[i] + " \")").closest('._4ikz').hide();
+    // sloppy way of 'pluralizing' words. it's not gonna work 100%
+    $("[role='article']:contains(\" " + bads[i] + "s \")").closest('._4ikz').hide();
+    $("[role='article']:contains(\" " + bads[i] + "es \")").closest('._4ikz').hide();
   }
   $('span:contains("\'s Birthday")').closest('._4ikz').hide();
   $('span._m8d:contains("Suggested Post")').closest("[role='article']").hide();
