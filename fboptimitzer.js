@@ -11,8 +11,8 @@ function deleteEm(){
   // these ones work:
   // bads stores every string that you don't wanna see in a post
   var politics = ["trump", "democrat", "republican", "right wing", "left wing", "liberal", "conservative"];
-  var clickbait = ["you won't believe", "faith in humanity", ""];
-  var lame = ["memes", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that"];
+  var clickbait = ["you won't believe", "faith in humanity", "one weird trick"];
+  var lame = ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth"];
   var ads = ["suggested page", "tour date", "sponsered"];
   var sports = ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"]
 
@@ -75,6 +75,19 @@ $("[id^=topnews_main_stream_]").on("change", function(){
 });
 
 deleteEm();
+
+articleCount = $("._4ikz [role='article']").length
+setInterval(function(){
+  console.log("Checking to see if any lameness has been spawned...");
+  newArticleCount = $("._4ikz [role='article']").length
+  if(newArticleCount > articleCount){
+    deleteEm();
+    articleCount = newArticleCount
+  }else{
+    console.log("It looks clear.");
+  }
+}, 10000);
+
 
 // chrome.storage.sync.set({'value': theValue}, function() {
 //     // Notify that we saved.
