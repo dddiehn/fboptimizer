@@ -17,11 +17,11 @@ function deleteEm(){
 
   // these ones work:
   // bads stores every string that you don't wanna see in a post
-  var politics = ["trump", "democrat", "republican", "right wing", "left wing", "liberal", "conservative"];
+  var politics  = ["trump", "democrat", "republican", "right wing", "left wing", "liberal", "conservative"];
   var clickbait = ["you won't believe", "faith in humanity", "one weird trick", "buzzfeed"];
-  var lame = ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "squad goals", "relationship goals", "fleek", "like if", "share if"];
-  var ads = ["suggested page", "tour date", "sponsered"];
-  var sports = ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"]
+  var lame      = ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "squad goals", "relationship goals", "fleek", "like if", "share if"];
+  var ads       = ["suggested page", "tour date", "sponsered"];
+  var sports    = ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"]
 
   // wow js is lame. should be able to do ['a'] + ['b'] to evaluate to ['a', 'b']
   // yes, I'm gonna be doing some conditionalizing when I get the config stuff working
@@ -36,8 +36,8 @@ function deleteEm(){
     // sloppy way of 'pluralizing' words. it's not gonna work 100%
     // https://api.jquery.com/attribute-starts-with-selector/
     singularDeletes = "[role='article']:contains(\" " + bads[i] + " \")   [role='article']:startsWith(\"" + bads[i] + " \") "
-    pluralDeletes   = "[role='article']:contains(\" " + bads[i] + "s \")  [role='article']:startsWith(\"" + bads[i] + "s \")"
-    pluralDeletees  = "[role='article']:contains(\" " + bads[i] + "es \") [role='article']:startsWith(\"" + bads[i] + "es \")"
+    pluralDeletes   = "[role='article']:contains(\" " + bads[i] + "s \")  [role='article']:startsWith(\"" + bads[i] + "s \") "
+    pluralDeletees  = "[role='article']:contains(\" " + bads[i] + "es \") [role='article']:startsWith(\"" + bads[i] + "es \") "
     deleteSelector = deleteSelector + singularDeletes + pluralDeletes + pluralDeletees
 
   }
