@@ -39,10 +39,11 @@ function deleteEm(){
 
     // sloppy way of 'pluralizing' words. it's not gonna work 100%
     // https://api.jquery.com/attribute-starts-with-selector/
-    singularDeletes = "[role='article']:contains(\" " + bads[i] + " \")   [role='article']:startsWith(\"" + bads[i] + " \") "
-    pluralDeletes   = "[role='article']:contains(\" " + bads[i] + "s \")  [role='article']:startsWith(\"" + bads[i] + "s \") "
-    pluralDeletees  = "[role='article']:contains(\" " + bads[i] + "es \") [role='article']:startsWith(\"" + bads[i] + "es \") "
-    deleteSelector = deleteSelector + singularDeletes + pluralDeletes + pluralDeletees
+    singularDeletes    = "[role='article']:contains(\" " + bads[i] + " \")   [role='article']:startsWith(\"" + bads[i] + " \") "
+    pluralDeletes      = "[role='article']:contains(\" " + bads[i] + "s \")  [role='article']:startsWith(\"" + bads[i] + "s \") "
+    possesiveDeletes   = "[role='article']:contains(\" " + bads[i] + "'s \") [role='article']:startsWith(\"" + bads[i] + "'s \") "
+    pluralDeletees     = "[role='article']:contains(\" " + bads[i] + "es \") [role='article']:startsWith(\"" + bads[i] + "es \") "
+    deleteSelector = deleteSelector + singularDeletes + pluralDeletes + pluralDeletees + possesiveDeletes
 
   }
   $(deleteSelector).closest('._4ikz').hide();
@@ -53,16 +54,6 @@ function deleteEm(){
   console.log('BAHLEETED ' + deleteCount() + ' sucky posts');
 
 }
-// http://stackoverflow.com/questions/20849496/using-facebook-sdk-with-chrome-extensions
-// I'm not doing anything with this yet
-window.fbAsyncInit = function() {
-    FB.init({
-      appId      : 'your-app-id',
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-    FB.AppEvents.logPageView();
-  };
 
 // http://stackoverflow.com/questions/10655202/detect-multiple-keys-on-single-keypress-event-in-jquery/10655316#10655316
 (function(d, s, id){
@@ -87,6 +78,30 @@ $(document).keydown(function(e) {
     down[e.keyCode] = false;
 });
 
+function updateFilter(name, value){
+  filter = {name: value}
+  chrome.storage.sync.set({"filter": filter}, function() {
+      console.log("name: " + name);
+      console.log("value: " + value);
+  });
+}
+
+function getFilters(){
+  console.log("getting filters");
+  console.log(chrome.storage.sync.get("filter"))
+}
+
+// ********************************************************************************************************************
+// mainish area:
+
+updateFilter("politics",  ["trump", "democrat", "republican", "right wing", "left wing", "liberal", "conservative"]);
+updateFilter("clickbait", ["you won't believe", "faith in humanity", "one weird trick", "buzzfeed", "get your tissues ready"]);
+updateFilter("lame",      ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "squad goals", "relationship goals", "fleek", "like if", "share if"]);
+updateFilter("ads",       ["suggested page", "tour date", "sponsered"]);
+updateFilter("sports",    ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"]);
+updateFilter("spoilers",  ["spoiler", "game of thrones", "harry potter", "star wars", "breaking bad"]);
+
+getFilters();
 
 deleteEm();
 
@@ -101,13 +116,6 @@ setInterval(function(){
     console.log("It looks clear. (" + deleteCount() + " so far)");
   }
 }, 5000);
-
-// WHY DOESN'T THIS WORK?
-// $( document ).ajaxComplete(function( event, xhr, settings ) {
-//   console.log("AJAX LOAD")
-//   deleteEm();
-// });
-
 
 
 // chrome.storage.sync.set({'value': theValue}, function() {
