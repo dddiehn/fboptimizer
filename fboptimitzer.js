@@ -21,11 +21,12 @@ function deleteEm(){
   var clickbait = ["you won't believe", "faith in humanity", "one weird trick", "buzzfeed"];
   var lame      = ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "squad goals", "relationship goals", "fleek", "like if", "share if"];
   var ads       = ["suggested page", "tour date", "sponsered"];
-  var sports    = ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"]
+  var sports    = ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"];
+  var spoilers  = ["spoiler", "game of thrones", "harry potter", "star wars", "breaking bad"];
 
   // wow js is lame. should be able to do ['a'] + ['b'] to evaluate to ['a', 'b']
   // yes, I'm gonna be doing some conditionalizing when I get the config stuff working
-  var bads = politics.concat(clickbait.concat(lame.concat(ads.concat(sports))));
+  var bads = politics.concat(clickbait.concat(lame.concat(ads.concat(sports.concat(spoilers)))));
   var deleteSelector = ""
   for (var i = 0; i < bads.length; i++) {
     console.log(bads[i]);
