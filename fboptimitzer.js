@@ -20,9 +20,9 @@ function deleteEm(){
 
   // these ones work:
   // bads stores every string that you don't wanna see in a post
-  var politics  = ["trump", "democrat", "republican", "right wing", "left wing", "liberal", "conservative"];
+  var politics  = ["trump", "democrat", "republican", "democratic", "republican", "libertarian", "green party", "right wing", "left wing", "liberal", "conservative", "socialism", "capitalism", "socialist", "capitalist"];
   var clickbait = ["you won't believe", "faith in humanity", "one weird trick", "buzzfeed", "get your tissues ready"];
-  var lame      = ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "squad goals", "relationship goals", "fleek", "like if", "share if"];
+  var lame      = ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "af", "squad goals", "relationship goals", "fleek", "like if", "share if", "blowing up", "break the internet", "broke the internet"];
   var ads       = ["suggested page", "tour date", "sponsered"];
   var sports    = ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"];
   var spoilers  = ["spoiler", "game of thrones", "harry potter", "star wars", "breaking bad"];
@@ -93,15 +93,21 @@ function getFilters(){
 
 // ********************************************************************************************************************
 // mainish area:
+//
 
-updateFilter("politics",  ["trump", "democrat", "republican", "right wing", "left wing", "liberal", "conservative"]);
-updateFilter("clickbait", ["you won't believe", "faith in humanity", "one weird trick", "buzzfeed", "get your tissues ready"]);
-updateFilter("lame",      ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "squad goals", "relationship goals", "fleek", "like if", "share if"]);
-updateFilter("ads",       ["suggested page", "tour date", "sponsered"]);
-updateFilter("sports",    ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"]);
-updateFilter("spoilers",  ["spoiler", "game of thrones", "harry potter", "star wars", "breaking bad"]);
 
-getFilters();
+
+// http://stackoverflow.com/questions/20764517/execute-script-after-click-in-popup-html-chrome-extension
+// for click events in the popup
+
+// updateFilter("politics",  ["trump", "democrat", "republican", "right wing", "left wing", "liberal", "conservative"]);
+// updateFilter("clickbait", ["you won't believe", "faith in humanity", "one weird trick", "buzzfeed", "get your tissues ready"]);
+// updateFilter("lame",      ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "squad goals", "relationship goals", "fleek", "like if", "share if"]);
+// updateFilter("ads",       ["suggested page", "tour date", "sponsered"]);
+// updateFilter("sports",    ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"]);
+// updateFilter("spoilers",  ["spoiler", "game of thrones", "harry potter", "star wars", "breaking bad"]);
+//
+// getFilters();
 
 deleteEm();
 
@@ -116,6 +122,10 @@ setInterval(function(){
     console.log("It looks clear. (" + deleteCount() + " so far)");
   }
 }, 5000);
+
+$('body').on('click', '#fbo-form', function() {
+  alert("test")
+});
 
 
 // chrome.storage.sync.set({'value': theValue}, function() {
