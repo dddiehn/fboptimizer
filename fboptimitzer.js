@@ -22,7 +22,7 @@ function deleteEm(){
   // bads stores every string that you don't wanna see in a post
   var politics  = ["trump", "democrat", "republican", "democratic", "republican", "libertarian", "green party", "right wing", "left wing", "liberal", "conservative", "socialism", "capitalism", "socialist", "capitalist"];
   var clickbait = ["you won't believe", "faith in humanity", "one weird trick", "buzzfeed", "get your tissues ready"];
-  var lame      = ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "af", "squad goals", "relationship goals", "fleek", "like if", "share if", "blowing up", "break the internet", "broke the internet"];
+  var lame      = ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "as f", "af", "squad goals", "relationship goals", "fleek", "like if", "share if", "blowing up", "break the internet", "broke the internet", "tag", "me"];
   var ads       = ["suggested page", "tour date", "sponsered"];
   var sports    = ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"];
   var spoilers  = ["spoiler", "game of thrones", "harry potter", "star wars", "breaking bad"];
