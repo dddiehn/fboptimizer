@@ -22,7 +22,7 @@ function deleteEm(){
   // bads stores every string that you don't wanna see in a post
   var politics  = ["trump", "democrat", "republican", "democratic", "republican", "libertarian", "green party", "right wing", "left wing", "liberal", "conservative", "socialism", "capitalism", "socialist", "capitalist"];
   var clickbait = ["you won't believe", "faith in humanity", "one weird trick", "buzzfeed", "get your tissues ready"];
-  var lame      = ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "af", "squad goals", "relationship goals", "fleek", "like if", "share if", "blowing up", "break the internet", "broke the internet"];
+  var lame      = ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "as f", "af", "squad goals", "relationship goals", "fleek", "like if", "share if", "blowing up", "break the internet", "broke the internet", "tag", "me", "pokemon"];
   var ads       = ["suggested page", "tour date", "sponsered"];
   var sports    = ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"];
   var spoilers  = ["spoiler", "game of thrones", "harry potter", "star wars", "breaking bad"];
@@ -37,13 +37,31 @@ function deleteEm(){
     // we should figure out a way so that words like "cat" don't hide words like "category"
     // right now I'm just including a space before and after the "bad words"
     // this won't hide posts that contain "bad words" at the end or beginning of the post
+    // I've now added the startsWith function to jQuery, I think we can do the same with endsWith
 
     // sloppy way of 'pluralizing' words. it's not gonna work 100%
     // https://api.jquery.com/attribute-starts-with-selector/
-    singularDeletes    = "[role='article']:contains(\" " + bads[i] + " \")   [role='article']:startsWith(\"" + bads[i] + " \") "
-    pluralDeletes      = "[role='article']:contains(\" " + bads[i] + "s \")  [role='article']:startsWith(\"" + bads[i] + "s \") "
-    possesiveDeletes   = "[role='article']:contains(\" " + bads[i] + "'s \") [role='article']:startsWith(\"" + bads[i] + "'s \") "
-    pluralDeletees     = "[role='article']:contains(\" " + bads[i] + "es \") [role='article']:startsWith(\"" + bads[i] + "es \") "
+
+
+    // contains
+    singularDeletes   = "[role='article']:contains(\" " + bads[i] + " \") "
+    pluralDeletes     = "[role='article']:contains(\" " + bads[i] + "s \") "
+    possesiveDeletes  = "[role='article']:contains(\" " + bads[i] + "'s \") "
+    pluralDeletees    = "[role='article']:contains(\" " + bads[i] + "es \") "
+
+    // startsWith
+    singularDeletes  += "[role='article']:startsWith(\"" + bads[i] + " \") "
+    pluralDeletes    += "[role='article']:startsWith(\"" + bads[i] + "s \") "
+    possesiveDeletes += "[role='article']:startsWith(\"" + bads[i] + "'s \") "
+    pluralDeletees   += "[role='article']:startsWith(\"" + bads[i] + "es \") "
+
+    // endsWith
+    // singularDeletes  += "[role='article']:endsWith(\"" + bads[i] + " \") "
+    // possesiveDeletes += "[role='article']:endsWith(\"" + bads[i] + "'s \") "
+    // pluralDeletes    += "[role='article']:endsWith(\"" + bads[i] + "s \") "
+    // pluralDeletees   += "[role='article']:endsWith(\"" + bads[i] + "es \") "
+
+    // combine all collections for one 'clean' one
     deleteSelector = deleteSelector + singularDeletes + pluralDeletes + pluralDeletees + possesiveDeletes
 
   }
