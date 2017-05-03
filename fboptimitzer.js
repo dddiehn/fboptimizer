@@ -120,7 +120,7 @@ function getFilters(){
 // for click events in the popup
 
 // updateFilter("politics",  ["trump", "democrat", "republican", "right wing", "left wing", "liberal", "conservative"]);
-// updateFilter("clickbait", ["you won't believe", "faith in humanity", "one weird trick", "buzzfeed", "get your tissues ready"]);
+// updateFilter("clickbait", ["you won't believe", "faith in humanity", "one weird trick", "buzzfeed", "get your tissues ready", "here's why", "here's how"]);
 // updateFilter("lame",      ["meme", "birthday", "trash dove", "that moment", "awkward moment", "my face", "my reaction", "in a relationship", "recipe", "am i the only one that", "viral", "me:", "smash mouth", "mondays", "leaving work on a friday", "asf", "squad goals", "relationship goals", "fleek", "like if", "share if"]);
 // updateFilter("ads",       ["suggested page", "tour date", "sponsered"]);
 // updateFilter("sports",    ["football", "nfl", "basketball", "baseball", "nhl", "hockey", "nba"]);
